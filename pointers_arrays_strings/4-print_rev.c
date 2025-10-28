@@ -14,7 +14,7 @@ while (s[i] != '\0')
 i++;
 }
 
-/* 2. On revient en arrière pour imprimer à l’envers */
+
 while (i > 0)
 {
 i--;

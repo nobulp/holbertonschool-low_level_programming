@@ -14,7 +14,7 @@ char temp;
 while (s[i] != '\0')
 i++;
 
-i--; 
+i--;
 
 while (j < i)
 {

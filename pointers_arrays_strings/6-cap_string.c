@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 
 /**
  * cap_string - met une majuscule au début de chaque mot d'une chaîne
@@ -9,17 +8,22 @@
  */
 char *cap_string(char *str)
 {
-int i = 0;
-char separators[] = " \t\n,;.!?\"(){}";
+int i = 0, j;
+char sep[] = " \t\n,;.!?\"(){}";
 
 while (str[i] != '\0')
 {
 
-if (i == 0 || strchr(separators, str[i - 1]) != NULL)
+if (i == 0 && (str[i] >= 'a' && str[i] <= 'z'))
+str[i] -= 32;
+
+
+for (j = 0; sep[j] != '\0'; j++)
 {
-if (str[i] >= 'a' && str[i] <= 'z')
+if (str[i] == sep[j] && (str[i + 1] >= 'a' && str[i + 1] <= 'z'))
 {
-str[i] -= 32; /* Convertit en majuscule */
+str[i + 1] -= 32;
+break;
 }
 }
 i++;

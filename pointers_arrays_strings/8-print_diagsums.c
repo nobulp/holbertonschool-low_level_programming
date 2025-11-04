@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * print_diagsums - affiche les sommes des deux diagonales d'une matrice carrée
+ * print_diagsums - affiche les sommes des deux diagonales d'une matrice
  * @a: pointeur vers la matrice d'entiers (traitée comme un tableau 1D)
  * @size: dimension de la matrice (nombre de lignes/colonnes)
  */

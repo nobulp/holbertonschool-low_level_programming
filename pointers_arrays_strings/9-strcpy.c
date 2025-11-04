@@ -18,7 +18,7 @@ while (src[i] != '\0')
 dest[i] = src[i];
 i++;
 }
-dest[i] = '\0'; /* On ajoute le caractère de fin */
+dest[i] = '\0'; 
 
 return (dest);
 }

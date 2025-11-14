@@ -7,47 +7,44 @@
  * @age: dog's age
  * @owner: dog's owner
  *
- * Return: pointer to new dog, or NULL if function fails
+ * Return: pointer to new dog, or NULL if fail
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 dog_t *d;
-int i, len_name = 0, len_owner = 0;
+int i, ln = 0, lo = 0;
 
 if (!name || !owner)
 return (NULL);
 
-while (name[len_name])
-len_name++;
-while (owner[len_owner])
-len_owner++;
+while (name[ln])
+ln++;
+while (owner[lo])
+lo++;
 
 d = malloc(sizeof(dog_t));
 if (!d)
 return (NULL);
 
-d->name = malloc(len_name + 1);
-if (!d->name)
+d->name = malloc(ln + 1);
+if (!(d->name))
 {
 free(d);
 return (NULL);
 }
 
-d->owner = malloc(len_owner + 1);
-if (!d->owner)
+d->owner = malloc(lo + 1);
+if (!(d->owner))
 {
 free(d->name);
 free(d);
 return (NULL);
 }
 
-for (i = 0; i < len_name; i++)
+for (i = 0; i <= ln; i++)
 d->name[i] = name[i];
-d->name[i] = '\0';
-
-for (i = 0; i < len_owner; i++)
+for (i = 0; i <= lo; i++)
 d->owner[i] = owner[i];
-d->owner[i] = '\0';
 
 d->age = age;
 

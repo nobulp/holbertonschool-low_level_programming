@@ -1,11 +1,17 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef DOG_H
+#define DOG_H
 
-typedef struct dog
+/**
+ * struct dog - structure for dog info
+ * @name: name of the dog
+ * @age: age of the dog
+ * @owner: owner of the dog
+ */
+struct dog
 {
-    char *name;
-    float age;
-    char *owner;
-} dog_t;
+char *name;
+float age;
+char *owner;
+};
 
 #endif

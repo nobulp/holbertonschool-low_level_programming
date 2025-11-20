@@ -1,7 +1,24 @@
 #include "3-calc.h"
 
 /**
- * main - performs simple operations
+ * main - Entry point of the program. Performs arithmetic operations
+ *        based on user input.
+ *
+ * @argc: number of arguments passed to the program
+ * @argv: array of pointers to the arguments
+ *
+ * Description:
+ * The program expects exactly 3 arguments:
+ * - argv[1]: first integer
+ * - argv[2]: operator (+, -, *, /, %)
+ * - argv[3]: second integer
+ *
+ * Return:
+ * 0 on success
+ * Exits with:
+ * 98 if the number of arguments is wrong
+ * 99 if the operator is invalid
+ * 100 if the user tries to divide or modulo by 0
  */
 int main(int argc, char *argv[])
 {

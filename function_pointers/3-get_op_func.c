@@ -2,7 +2,19 @@
 #include <string.h>
 
 /**
- * get_op_func - selects the correct function
+ * get_op_func - Selects the correct arithmetic function
+ *               based on the operator passed as argument.
+ *
+ * @s: pointer to the operator passed by the user
+ *
+ * Description:
+ * The function compares the operator provided by the user
+ * with a list of valid operators. If a match is found,
+ * it returns a pointer to the corresponding function.
+ *
+ * Return:
+ * Pointer to the function that performs the requested operation.
+ * Returns NULL if no valid operator is found.
  */
 int (*get_op_func(char *s))(int, int)
 {

@@ -15,17 +15,17 @@ list_t *new;
 unsigned int len = 0;
 
 if (str == NULL)
-return NULL;
+return (NULL);
 
 new = malloc(sizeof(list_t));
 if (new == NULL)
-return NULL;
+return (NULL);
 
 new->str = strdup(str);
 if (new->str == NULL)
 {
 free(new);
-return NULL;
+return (NULL);
 }
 
 while (str[len])
@@ -35,5 +35,5 @@ new->len = len;
 new->next = *head;
 *head = new;
 
-return new;
+return (new);
 }

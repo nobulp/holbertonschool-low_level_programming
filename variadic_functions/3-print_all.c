@@ -1,6 +1,6 @@
 #include "variadic_functions.h"
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
  * print_all - prints anything
@@ -11,44 +11,64 @@
 void print_all(const char * const format, ...)
 {
 va_list ap;
-int i = 0, printed = 0;
+unsigned int i = 0, j;
 char *str;
+
+void print_char(va_list ap)
+{
+printf("%c", va_arg(ap, int));
+}
+
+void print_int(va_list ap)
+{
+printf("%d", va_arg(ap, int));
+}
+
+void print_float(va_list ap)
+{
+printf("%f", va_arg(ap, double));
+}
+
+void print_string(va_list ap)
+{
+str = va_arg(ap, char *);
+if (str == NULL)
+str = "(nil)";
+printf("%s", str);
+}
+
+typedef struct printer
+{
+char t;
+void (*f)(va_list);
+} printer_t;
+
+printer_t ops[] = {
+{'c', print_char},
+{'i', print_int},
+{'f', print_float},
+{'s', print_string},
+{'\0', NULL}
+};
 
 va_start(ap, format);
 
 while (format && format[i])
 {
-if (format[i] == 'c')
+j = 0;
+while (ops[j].t)
 {
-printf("%c", va_arg(ap, int));
-printed = 1;
-}
-else if (format[i] == 'i')
+if (ops[j].t == format[i])
 {
-printf("%d", va_arg(ap, int));
-printed = 1;
-}
-else if (format[i] == 'f')
-{
-printf("%f", va_arg(ap, double));
-printed = 1;
-}
-else if (format[i] == 's')
-{
-str = va_arg(ap, char *);
-if (!str)
-str = "(nil)";
-printf("%s", str);
-printed = 1;
-}
-
-if (format[i + 1] && printed == 1)
+ops[j].f(ap);
+if (format[i + 1] != '\0')
 printf(", ");
-
-printed = 0;
-i++;
 }
+j++;
+        }
+        i++;
+    }
 
-printf("\n");
+    printf("\n");
 va_end(ap);
 }
